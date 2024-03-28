@@ -20,7 +20,7 @@ function App() {
   }, [isLoggedIn, email, setIsLoggedIn, setEmail]);
 
   return (
-    <div className="App w-full bg-gray-50 dark:bg-gray-800 dark:text-gray-50">
+    <div className="App w-full bg-gray-50 dark:bg-gradient-to-r from-indigo-800 to-violet-900 dark:text-gray-50">
       <BrowserRouter>
         {isLoggedIn && <Header />}
         <Routes>

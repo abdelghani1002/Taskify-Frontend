@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 export default function Header() {
     return (
-        <Navbar fluid className="bg-gradient-to-r dark:from-indigo-800 dark:via-blue-900 dark:to-violet-900 bg-transparent">
+        <Navbar fluid className="shadow-sm bg-gradient-to-r from-sky-100 via-slate-200 to-sky-100 dark:from-indigo-800 dark:via-blue-900 dark:to-violet-900 bg-transparent">
             <Navbar.Brand href="/">
                 <AppLogo />
             </Navbar.Brand>
@@ -24,10 +24,6 @@ export default function Header() {
                         <span className="block text-sm">Bonnie Green</span>
                         <span className="block truncate text-sm font-medium">name@flowbite.com</span>
                     </Dropdown.Header>
-                    <Dropdown.Item>Dashboard</Dropdown.Item>
-                    <Dropdown.Item>Settings</Dropdown.Item>
-                    <Dropdown.Item>Earnings</Dropdown.Item>
-                    <Dropdown.Divider />
                     <Dropdown.Item>
                         <Link to="/logout">Logout</Link>
                     </Dropdown.Item>
@@ -41,10 +37,10 @@ export default function Header() {
                 Home
                 </Navbar.Link>
                 <Navbar.Link href="#" 
-                >About
+                >Projects
                 </Navbar.Link>
                 <Navbar.Link href="#" 
-                >Services
+                >Workspaces
                 </Navbar.Link>
             </Navbar.Collapse>
         </Navbar>
