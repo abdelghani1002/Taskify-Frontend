@@ -5,8 +5,7 @@ import AppLogo from '../components/AppLogo';
 import '../App.css';
 import { Button, DarkThemeToggle, Spinner } from 'flowbite-react';
 
-
-const Login = ({ isLoggedIn, setIsLoggedIn, setEmail }) => {
+const Login = ({ isLoggedIn, setIsLoggedIn, setEmail, setUser }) => {
     const navigate = useNavigate();
 
     const [loggingIn, setLoggingIn] = useState(false);
@@ -20,9 +19,11 @@ const Login = ({ isLoggedIn, setIsLoggedIn, setEmail }) => {
     });
 
     useEffect(() => {
-        console.log("is logged in : " + isLoggedIn);
-        if (isLoggedIn) navigate('/');
-    }, [values, inputsStyle, valuesError, isLoggedIn, navigate]);
+        if (isLoggedIn){
+            navigate('/');
+            setUser(localStorage.getItem('user'))
+        }
+    }, [isLoggedIn, navigate, setUser]);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -33,8 +34,10 @@ const Login = ({ isLoggedIn, setIsLoggedIn, setEmail }) => {
             if (response.data.status) {
                 localStorage.setItem('token', response.data.authorisation.token);
                 localStorage.setItem('email', values.email);
+                localStorage.setItem('user', response.data.user);
                 setIsLoggedIn(true);
                 setEmail(values.email);
+                setUser(response.data.user);
                 navigate('/');
             } else {
                 // Handle errors

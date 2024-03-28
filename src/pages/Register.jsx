@@ -6,7 +6,7 @@ import '../App.css';
 import { Button, DarkThemeToggle, Spinner } from 'flowbite-react';
 
 
-const Register = ({ isLoggedIn, setIsLoggedIn, setEmail }) => {
+const Register = ({ isLoggedIn, setUser, setIsLoggedIn, setEmail }) => {
     const navigate = useNavigate();
 
     const [registering, setRegistring] = useState(false);
@@ -21,9 +21,11 @@ const Register = ({ isLoggedIn, setIsLoggedIn, setEmail }) => {
     });
 
     useEffect(() => {
-        console.log("is logged in : " + isLoggedIn);
-        if (isLoggedIn) navigate('/');
-    }, [values, inputsStyle, valuesError, isLoggedIn, navigate]);
+        if (isLoggedIn) {
+            navigate('/');
+            setUser(localStorage.getItem('user'));
+        }
+    }, [isLoggedIn, setUser, navigate]);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -32,14 +34,14 @@ const Register = ({ isLoggedIn, setIsLoggedIn, setEmail }) => {
         try {
             const response = await register(values.name, values.email, values.password, values.password_confirmation);
             if (!response.data.status) {
-                // Handle errors
-                console.log(response.data.errors);
                 setValuesError({ ...valuesError, errors: response.data.errors });
             } else {
                 localStorage.setItem('token', response.data.authorisation.token);
                 localStorage.setItem('email', values.email);
+                localStorage.setItem('user', response.data.user);
                 setIsLoggedIn(true);
                 setEmail(values.email);
+                setUser(response.data.user);
                 navigate('/');
             }
         } catch (error) {

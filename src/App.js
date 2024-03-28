@@ -11,23 +11,25 @@ import NotFound from './pages/NotFound.jsx'
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [email, setEmail] = useState('');
+  const [user, setUser] = useState({});
 
   useEffect(() => {
     if (localStorage.getItem('token')) {
       setIsLoggedIn(true);
       setEmail(localStorage.getItem('email'));
+      setUser(localStorage.getItem('user'));
     }
-  }, [isLoggedIn, email, setIsLoggedIn, setEmail]);
+  }, [isLoggedIn, email, setIsLoggedIn, setEmail, setUser]);
 
   return (
     <div className="App w-full bg-gray-50 dark:bg-gradient-to-r from-indigo-800 to-violet-900 dark:text-gray-50">
       <BrowserRouter>
-        {isLoggedIn && <Header />}
+        {isLoggedIn && <Header user={user}/>}
         <Routes>
-          <Route path="/" element={<Home email={email} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />} />
-          <Route path="/login" element={<Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setEmail={setEmail}/>} />
-          <Route path="/register" element={<Register isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setEmail={setEmail}/>} />
-          <Route path="/logout" element={<Logout isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setEmail={setEmail}/>} />
+          <Route path="/" element={<Home email={email} isLoggedIn={isLoggedIn} setUser={setUser} setIsLoggedIn={setIsLoggedIn} />} />
+          <Route path="/login" element={<Login isLoggedIn={isLoggedIn} setUser={setUser} setIsLoggedIn={setIsLoggedIn} setEmail={setEmail}/>} />
+          <Route path="/register" element={<Register isLoggedIn={isLoggedIn} setUser={setUser} setIsLoggedIn={setIsLoggedIn} setEmail={setEmail}/>} />
+          <Route path="/logout" element={<Logout isLoggedIn={isLoggedIn} setUser={setUser} setIsLoggedIn={setIsLoggedIn} setEmail={setEmail}/>} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

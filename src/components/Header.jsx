@@ -5,7 +5,7 @@ import { Avatar, DarkThemeToggle, Dropdown, Navbar } from 'flowbite-react';
 import AppLogo from './AppLogo';
 import { Link } from 'react-router-dom';
 
-export default function Header() {
+export default function Header({user}) {
     return (
         <Navbar fluid className="shadow-sm bg-gradient-to-r from-sky-100 via-slate-200 to-sky-100 dark:from-indigo-800 dark:via-blue-900 dark:to-violet-900 bg-transparent">
             <Navbar.Brand href="/">
