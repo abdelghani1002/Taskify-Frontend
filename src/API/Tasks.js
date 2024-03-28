@@ -39,9 +39,7 @@ export function deleteTask(token, id) {
 }
 
 export function completeTask(token, id) {
-    return axios.post(`${API_URL}/tasks/complete/${id}`, {
-        status: "done"
-    }, {
+    return axios.post(`${API_URL}/tasks/complete/${id}`, {}, {
         headers: {
             Authorization: `Bearer ${token}`,
             Accept: "application/json",
