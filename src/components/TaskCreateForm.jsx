@@ -34,7 +34,7 @@ export default function TaskCreateForm({ setTasks, setIsLoggedIn }) {
         if (openModal) {
             emailInputRef.current?.focus();
         }
-    }, [openModal, navigate]);
+    }, [openModal]);
 
     const testRegExp = (target) => {
         if (target.name === 'title') {
