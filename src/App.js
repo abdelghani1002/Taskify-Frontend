@@ -17,7 +17,7 @@ function App() {
     if (localStorage.getItem('token')) {
       setIsLoggedIn(true);
       setEmail(localStorage.getItem('email'));
-      setUser(localStorage.getItem('user'));
+      setUser(JSON.parse(localStorage.getItem('user')));
     }
   }, [isLoggedIn, email, setIsLoggedIn, setEmail, setUser]);
 

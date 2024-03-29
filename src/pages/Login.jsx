@@ -21,7 +21,7 @@ const Login = ({ isLoggedIn, setIsLoggedIn, setEmail, setUser }) => {
     useEffect(() => {
         if (isLoggedIn){
             navigate('/');
-            setUser(localStorage.getItem('user'))
+            setUser(JSON.parse(localStorage.getItem('user')));
         }
     }, [isLoggedIn, navigate, setUser]);
 
@@ -34,10 +34,10 @@ const Login = ({ isLoggedIn, setIsLoggedIn, setEmail, setUser }) => {
             if (response.data.status) {
                 localStorage.setItem('token', response.data.authorisation.token);
                 localStorage.setItem('email', values.email);
-                localStorage.setItem('user', response.data.user);
+                localStorage.setItem('user', JSON.stringify(response.data.user));
                 setIsLoggedIn(true);
                 setEmail(values.email);
-                setUser(response.data.user);
+                setUser(JSON.stringify(response.data.user));
                 navigate('/');
             } else {
                 // Handle errors

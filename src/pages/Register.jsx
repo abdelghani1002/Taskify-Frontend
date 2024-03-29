@@ -23,7 +23,7 @@ const Register = ({ isLoggedIn, setUser, setIsLoggedIn, setEmail }) => {
     useEffect(() => {
         if (isLoggedIn) {
             navigate('/');
-            setUser(localStorage.getItem('user'));
+            setUser(JSON.parse(localStorage.getItem('user')));
         }
     }, [isLoggedIn, setUser, navigate]);
 
@@ -38,10 +38,10 @@ const Register = ({ isLoggedIn, setUser, setIsLoggedIn, setEmail }) => {
             } else {
                 localStorage.setItem('token', response.data.authorisation.token);
                 localStorage.setItem('email', values.email);
-                localStorage.setItem('user', response.data.user);
+                localStorage.setItem('user', JSON.stringify(response.data.user));
                 setIsLoggedIn(true);
                 setEmail(values.email);
-                setUser(response.data.user);
+                setUser(JSON.stringify(response.data.user));
                 navigate('/');
             }
         } catch (error) {
