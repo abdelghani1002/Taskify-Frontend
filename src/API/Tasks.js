@@ -46,3 +46,12 @@ export function completeTask(token, id) {
         }
     });
 }
+
+export function inCompleteTask(token, id) {
+    return axios.post(`${API_URL}/tasks/incomplete/${id}`, {}, {
+        headers: {
+            Authorization: `Bearer ${token}`,
+            Accept: "application/json",
+        }
+    });
+}
