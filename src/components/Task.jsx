@@ -1,6 +1,6 @@
 import { Popover, Spinner } from "flowbite-react";
 import { useState } from "react";
-import { completeTask, inCompleteTask } from "../API/Tasks";
+import { completeTask, deleteTask, inCompleteTask } from "../API/Tasks";
 import TaskEditForm from "./TaskEditForm";
 
 export default function Task({ task, id, setTasks, setError, setIsLoggedIn }) {
@@ -34,6 +34,18 @@ export default function Task({ task, id, setTasks, setError, setIsLoggedIn }) {
         setSubmitting(false);
     }
 
+    const handleDelete = async () => {
+        console.log('delete task '+ task.id);
+        setSubmitting(true);
+        let res = await deleteTask(token, id);
+        if (res.status === 200) {
+            setTasks(()=>res.data.tasks);
+        } else {
+            setError('Deleting the task failed, please try again.');
+        }
+        setSubmitting(false);
+    }
+
     return (
         <div className="task flex items-center gap-3 w-full md:w-2/3 lg:w-3/4 hover:shadow cursor-pointer hover:shadow-sky-200 p-3 my-0.5 bg-gray-100 border dark:border-indigo-500 rounded-md dark:bg-gradient-to-r from-indigo-900 to-violet-800">
             {submiting ?
@@ -64,12 +76,11 @@ export default function Task({ task, id, setTasks, setError, setIsLoggedIn }) {
                             <Popover
                                 className="overflow-hidden"
                                 aria-labelledby="default-popover"
-
                                 content={
                                     <div className="w-48 p-2 text-sm text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gradient-to-br from-violet-900 to-indigo-800">
                                         {/* // edit task form : passing popover close function*/}
                                         <TaskEditForm task={task} setTasks={setTasks} setIsLoggedIn={setIsLoggedIn} />
-                                        <button className="flex items-center w-full text-left text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white hover:text-semibold p-2">
+                                        <button onClick={handleDelete} className="flex items-center w-full text-left text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white hover:text-semibold p-2">
                                             <span className="mr-2 flex justify-start">
                                                 <svg className="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                                                     <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 7h14m-9 3v8m4-8v8M10 3h4a1 1 0 0 1 1 1v3H9V4a1 1 0 0 1 1-1ZM6 7h12v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7Z" />
