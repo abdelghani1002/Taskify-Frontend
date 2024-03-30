@@ -194,7 +194,6 @@ export default function TaskCreateForm({ setTasks, setIsLoggedIn }) {
             const response = await createTask(token, data);
             if (response.status === 201) {
                 const tasks = response.data.tasks;
-                console.log(response.data);
                 setTasks(tasks);
                 setValues({
                     title: '',

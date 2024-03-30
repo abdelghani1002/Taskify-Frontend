@@ -209,7 +209,6 @@ export default function TaskEditForm({ task, setTasks, setIsLoggedIn }) {
                     description: response.data.errors.description ? response.data.errors.description[0] : '',
                     deadline: response.data.errors.deadline ? response.data.errors.deadline[0] : '',
                 });
-                console.log(response.data.errors);
             }
             setIsSubmiting(false);
         } catch (error) {
