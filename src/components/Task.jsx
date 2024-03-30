@@ -49,10 +49,12 @@ export default function Task({ task, id, setTasks, setError, setIsLoggedIn }) {
     return (
         <div className="task flex items-center gap-3 w-full md:w-2/3 lg:w-3/4 hover:shadow cursor-pointer hover:shadow-sky-200 p-3 my-0.5 bg-gray-100 border dark:border-indigo-500 rounded-md dark:bg-gradient-to-r from-indigo-900 to-violet-800">
             {submiting ?
+                // spinner while submitting
                 <div className="w-full flex justify-center items-center">
                     <Spinner aria-label="Extra small spinner example" size="md" />
                 </div>
                 :
+                // content of the task
                 <div className="flex items-center gap-3 w-full">
                     <div>
                         {task.status !== "done" ?
@@ -77,7 +79,7 @@ export default function Task({ task, id, setTasks, setError, setIsLoggedIn }) {
                                 className="overflow-hidden"
                                 aria-labelledby="default-popover"
                                 content={
-                                    <div className="w-48 p-2 text-sm text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gradient-to-br from-violet-900 to-indigo-800">
+                                    <div className="w-48 p-2 text-sm border dark:border-none text-gray-500 dark:text-gray-400 bg-gray-200 dark:bg-gradient-to-br from-violet-900 to-indigo-800">
                                         {/* // edit task form : passing popover close function*/}
                                         <TaskEditForm task={task} setTasks={setTasks} setIsLoggedIn={setIsLoggedIn} />
                                         <button onClick={handleDelete} className="flex items-center w-full text-left text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white hover:text-semibold p-2">
@@ -101,6 +103,39 @@ export default function Task({ task, id, setTasks, setError, setIsLoggedIn }) {
                             </Popover>
                         </div>
                     </div>
+                    {/* details of the task */}
+                    <Popover className="overflow-hidden" aria-labelledby="default-popover" content={
+                        <div className="w-96 z-50 p-2 text-sm border dark:border-none  text-gray-500 dark:text-gray-400 bg-gray-200 dark:bg-gradient-to-br from-violet-900 to-indigo-800">
+                            <p className="text-gray-600 dark:text-gray-300 p-2 border-b">
+                                {task.description}
+                            </p>
+                            <div className="text-gray-600 dark:text-gray-400 flex justify-end">
+                                {/* Deadline countdown */}
+                                <div className="text-gray-400">
+                                    {task.deadline ? 
+                                    <div id="time" className="text-gray-400">
+                                        {new Date(task.deadline) > new Date() ? 
+                                        <div className="text-gray-400">
+                                            {new Date(task.deadline).toLocaleString()}
+                                        </div> 
+                                        : 
+                                        <div className="text-red-500">
+                                            {new Date(task.deadline).toLocaleString()}
+                                        </div>
+                                        }
+                                    </div> 
+                                    : 
+                                    'No Deadline'
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    }>
+                        <button className="flex p-2 justify-end">
+                            <div className="p-1 border-r border-b rotate-45 border-gray-400">
+                            </div>
+                        </button>
+                    </Popover>
                 </div>
             }
         </div>
