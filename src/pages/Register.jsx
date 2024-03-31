@@ -29,6 +29,9 @@ const Register = ({ isLoggedIn, setUser, setIsLoggedIn, setEmail }) => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        if (valuesError.name || valuesError.email || valuesError.password || valuesError.password_confirmation) {
+            return;
+        }
         setRegistring(() => true);
 
         try {

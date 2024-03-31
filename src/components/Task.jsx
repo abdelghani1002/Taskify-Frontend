@@ -35,7 +35,6 @@ export default function Task({ task, id, setTasks, setError, setIsLoggedIn }) {
     }
 
     const handleDelete = async () => {
-        console.log('delete task '+ task.id);
         setSubmitting(true);
         let res = await deleteTask(token, id);
         if (res.status === 200) {
