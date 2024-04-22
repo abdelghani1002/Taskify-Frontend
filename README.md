@@ -1,9 +1,3 @@
----
-runme:
-  id: 01HW2QB3HTQRHV221J0ZS43SMF
-  version: v3
----
-
 <p align="center">
   <img src="https://img.icons8.com/?size=512&id=55494&format=png" width="100" />
 </p>
