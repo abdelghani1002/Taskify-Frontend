@@ -1,3 +1,4 @@
+import Swal from 'sweetalert2';
 import { register } from '../API/Auth';
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
@@ -48,6 +49,11 @@ const Register = ({ isLoggedIn, setUser, setIsLoggedIn, setEmail }) => {
                 navigate('/');
             }
         } catch (error) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong!',
+            });
             console.error(error);
         }
         setRegistring(() => false);
