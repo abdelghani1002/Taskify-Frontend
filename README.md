@@ -36,13 +36,14 @@ runme:
 > - [🚀 Getting Started](#-getting-started)
 >    - [⚙️ Installation](#️-installation)
 >    - [🤖 Running Taskify-Frontend](#-running-Taskify-Frontend)
+>
 > - [🤝 Contributing](#-contributing)
 
 ---
 
 ## 📍 Overview
 
-HTTP error 401 for prompt `overview`
+Simple web app for managing your day tasks using ReactJS with API 
 
 ---
 
@@ -91,6 +92,7 @@ HTTP error 401 for prompt `overview`
     │   ├── reportWebVitals.js
     │   └── setupTests.js
     └── tailwind.config.js
+
 ```
 
 ---
@@ -101,33 +103,34 @@ HTTP error 401 for prompt `overview`
 
 Ensure you have the following dependencies installed on your system:
 
-* **react**: `version 18.2.0`
-* **react-dom**: `version 18.2.0`
-* **react-router-dom**: `version 6.22.*`
+* **javascript**: `version *.*.*`
 
 ### ⚙️ Installation
 
 0. Run Taskify API:
 
-<strong>Clone, setup and run</strong>
-<a style="margin-left:50px" href="https://github.com/abdelghani1002/Taskify-API">Taskify API</a>
+Clone, setup and run
+Taskify API
 
 1. Clone the Taskify-Frontend repository:
 
 ```sh {"id":"01HW2QB3HTQRHV221J0G2ZDRQ4"}
 git clone https://github.com/abdelghani1002/Taskify-Frontend
+
 ```
 
 2. Change to the project directory:
 
 ```sh {"id":"01HW2QB3HTQRHV221J0JAHHKFA"}
 cd Taskify-Frontend
+
 ```
 
 3. Install the dependencies:
 
 ```sh {"id":"01HW2QB3HTQRHV221J0JHMBZY3"}
 npm install
+
 ```
 
 ### 🤖 Running Taskify-Frontend
@@ -136,6 +139,7 @@ Use the following command to run Taskify-Frontend:
 
 ```sh {"id":"01HW2QB3HTQRHV221J0JKXCVRR"}
 npm start
+
 ```
 
 ---
@@ -152,31 +156,33 @@ Contributions are welcome! Here are several ways you can contribute:
     <summary>Contributing Guidelines</summary>
 
 1. **Fork the Repository**: Start by forking the project repository to your GitHub account.
-
 2. **Clone Locally**: Clone the forked repository to your local machine using a Git client.
 
 ```sh {"id":"01HW2QB3HTQRHV221J0QN0Z1NF"}
 git clone https://github.com/abdelghani1002/Taskify-Frontend
+
 ```
 
 3. **Create a New Branch**: Always work on a new branch, giving it a descriptive name.
 
 ```sh {"id":"01HW2QB3HTQRHV221J0RW6V62T"}
 git checkout -b new-feature-x
+
 ```
 
 4. **Make Your Changes**: Develop and test your changes locally.
-
 5. **Commit Your Changes**: Commit with a clear message describing your updates.
 
 ```sh {"id":"01HW2QB3HTQRHV221J0VZND8R0"}
 git commit -m 'Implemented new feature x.'
+
 ```
 
 6. **Push to GitHub**: Push the changes to your forked repository.
 
 ```sh {"id":"01HW2QB3HTQRHV221J0ZAMDR7K"}
 git push origin new-feature-x
+
 ```
 
 7. **Submit a Pull Request**: Create a PR against the original project repository. Clearly describe the changes and their motivations.
